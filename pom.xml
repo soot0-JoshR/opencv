@@ -7,7 +7,7 @@
   <packaging>bundle</packaging>
   <groupId>org.openpnp</groupId>
   <artifactId>opencv</artifactId>
-  <version>4.7.0-0</version>
+  <version>4.8.0-0</version>
   <name>OpenPnP OpenCV</name>
   <description>OpenCV packaged with native libraries and loader for multiple platforms.</description>
   <url>http://github.com/openpnp/opencv</url>
@@ -20,9 +20,9 @@
 
   <profiles>
     <profile>
-      <id>jdk-8</id>
+      <id>jdk-17</id>
       <activation>
-        <jdk>1.8</jdk>
+        <jdk>17</jdk>
       </activation>
       <properties>
         <!-- OpenCV's Javadocs fail DocLint tests. See http://stackoverflow.com/a/16743137 for tip. -->
@@ -157,12 +157,13 @@
         </configuration>
       </plugin>
 
-
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version> <!-- Specify the appropriate version -->
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.7</source> <!-- JDK version -->
+          <target>1.7</target> <!-- JDK version -->
         </configuration>
       </plugin>
 
@@ -271,10 +272,11 @@
         </executions>
         <configuration>
           <links>
-            <link>http://docs.opencv.org/java/</link>
-            <link>http://docs.oracle.com/javase/8/docs/api/</link>
+            <link>https://docs.opencv.org/java/3.0.0/</link>
+            <link>https://docs.oracle.com/en/java/javase/17/docs/api/</link>
           </links>
           <additionalparam>${javadoc.parameters}</additionalparam>
+          <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
         </configuration>
       </plugin>
     </plugins>
